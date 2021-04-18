@@ -8,7 +8,6 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
-
   List<Widget> forms = [SignUpForm(), SignInForm()];
   int selectedForm = 0;
 
@@ -23,13 +22,18 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Stack(
-          children: <Widget>[
-            IndexedStack(
-              index: selectedForm,
-              children: forms,
-              ),
-            Container(
+        child: Stack(children: <Widget>[
+          IndexedStack(
+            index: selectedForm,
+            children: forms,
+          ),
+          //Positioned 는 Stack안에서만 사용할 수 있다.
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: Container(
+              color: Colors.white,
               child: FlatButton(
                 onPressed: () {
                   setState(() {
@@ -40,11 +44,24 @@ class _AuthScreenState extends State<AuthScreen> {
                     }
                   });
                 },
-                child: Text("go to Sign up"),
+                child: RichText(
+                  text: TextSpan(
+                    text: (selectedForm == 0)
+                        ? "이미 계정이 있습니까?  "
+                        : "계정을 가지고 있지 않습니까?  ",
+                    style: TextStyle(color: Colors.grey),
+                    children: [
+                      TextSpan(
+                          text: (selectedForm == 1) ? "로그인하기" : "계정만들기",
+                          style: TextStyle(color: Colors.black45,
+                              fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                ),
               ),
             ),
-          ],
-        ),
+          ),
+        ]),
       ),
     );
   }
