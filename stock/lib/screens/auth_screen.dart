@@ -32,9 +32,11 @@ class _AuthScreenState extends State<AuthScreen> {
             left: 0,
             right: 0,
             bottom: 0,
+            height: 45,
             child: Container(
               color: Colors.white,
               child: FlatButton(
+                shape: Border(top: BorderSide(color: Colors.grey)),
                 onPressed: () {
                   setState(() {
                     if (selectedForm == 0) {
@@ -52,7 +54,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     style: TextStyle(color: Colors.grey),
                     children: [
                       TextSpan(
-                          text: (selectedForm == 1) ? "로그인하기" : "계정만들기",
+                          text: (selectedForm == 0) ? "로그인하기" : "계정만들기",
                           style: TextStyle(color: Colors.black45,
                               fontWeight: FontWeight.bold)),
                     ],

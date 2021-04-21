@@ -1,0 +1,1 @@
+const double common_l_gap = 40;
