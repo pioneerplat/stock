@@ -21,6 +21,9 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //키보드 화면이 올라왔을 때 화면을 가리지 않도록 하기 위한 옵션 (기본값은 true)
+      //나는 키보드가 올라왔을 때 화면이 변하지 않길 바라기에 false
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Stack(children: <Widget>[
           IndexedStack(

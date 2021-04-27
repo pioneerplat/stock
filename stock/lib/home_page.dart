@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:stock/model/screen_size.dart';
 import 'package:stock/model/stock_state.dart';
+import 'package:stock/screens/account_screen.dart';
 import 'package:stock/screens/stock_screen.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,13 +30,15 @@ class _HomePageState extends State<HomePage> {
 
   static List<Widget> _screens = <Widget>[
     StockScreen(),
-    Container(
-      color: Colors.red,
-    ),
+    AccountScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    //디바이스의 사이즈를 size에 설정
+    if(size == null) {
+      size = MediaQuery.of(context).size;
+    }
     return MultiProvider(
       providers: [
         //첫번 째 방법 (미리 실행해 줄것이 있다면 이 방법이 좋다)
